@@ -430,7 +430,7 @@ class ModelTrainer:
             loss_object = tf.keras.losses.SparseCategoricalCrossentropy(from_logits=True, reduction='none')
 
             log('epoch')
-            epochs = 100
+            epochs = 50
             for epoch in range(1, epochs + 1):
                 enc_hidden = encoder.initialize_hidden_state()
                 total_loss = 0
@@ -440,11 +440,14 @@ class ModelTrainer:
                 print('Epoch:', epoch, '  Loss:', total_loss / steps_per_epoch)
 
 
+            log('input and target pkl files are saving to artifacts folder')
             save_object(os.path.join(getPath(), 'artifacts','input_.pkl'), input_lang)
             save_object(os.path.join(getPath(), 'artifacts','target_.pkl'), target_lang)
 
+            log('models are saving to artifacts folder')
             tf.saved_model.save(encoder, os.path.join(getPath(), 'artifacts','encoder'))
             tf.saved_model.save(decoder, os.path.join(getPath(), 'artifacts','decoder'))
+            log('models saved..')
 
         except Exception as e:
             raise CustomException(e, sys)

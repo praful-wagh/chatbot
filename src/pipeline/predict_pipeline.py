@@ -71,4 +71,4 @@ class PredictPipeline:
                 dec_input = tf.cast(dec_input, tf.float32)
 
         except Exception as e:
-            CustomException(e, sys)
+            raise CustomException(e, sys)

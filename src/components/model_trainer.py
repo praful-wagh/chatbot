@@ -1,5 +1,5 @@
 import os, sys
-import pandas as pd, numpy as np
+import pandas as pd
 import re, string, unicodedata
 from src.logger import log
 from src.exception import CustomException

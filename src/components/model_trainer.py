@@ -440,14 +440,14 @@ class ModelTrainer:
                 print('Epoch:', epoch, '  Loss:', total_loss / steps_per_epoch)
 
 
-            log('input and target pkl files are saving to artifacts folder')
+            log('input and target pkl files are saving...')
             save_object(os.path.join(getPath(), 'artifacts','input_.pkl'), input_lang)
             save_object(os.path.join(getPath(), 'artifacts','target_.pkl'), target_lang)
 
-            log('models are saving to artifacts folder')
+            log('models are saving...')
             tf.saved_model.save(encoder, os.path.join(getPath(), 'artifacts','encoder'))
             tf.saved_model.save(decoder, os.path.join(getPath(), 'artifacts','decoder'))
-            log('models saved..')
+            log('models saved.')
 
         except Exception as e:
             raise CustomException(e, sys)
